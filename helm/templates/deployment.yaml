@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pipeline11java-app
+  namespace: bank-production-v11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pipeline11java-app
+  template:
+    metadata:
+      labels:
+        app: pipeline11java-app
+    spec:
+      containers:
+      # Container 1: The Java Backend
+      - name: java-backend
+        image: sshivaji555/pipeline11java-app:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8081
+        env:
+          - name: SPRING_DATASOURCE_URL
+            value: "jdbc:mysql://mysql-service.bank-production-v10.svc.cluster.local:3306/abc_bank"
+          - name: DB_USER
+            value: "root"
+          - name: DB_PASSWORD
+            value: "admin123"
+        resources:                    # <-- स्पीड बढ़ाने के लिए यह जोड़ा गया है
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+
+      # Container 2: Nginx Proxy
+      - name: nginx
+        image: nginx:latest
+        ports:
+          - containerPort: 80
+        volumeMounts:
+          - name: nginx-config
+            mountPath: /etc/nginx/conf.d/default.conf
+            subPath: default.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: pipeline11-nginx-config
