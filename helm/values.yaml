@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: sshivaji555/pipeline11java-app
-  tag: 32
+  tag: 33
   pullPolicy: Always
 
 service:
