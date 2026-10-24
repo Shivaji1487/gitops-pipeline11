@@ -1,0 +1,8 @@
+namespace: bank-production-v11
+
+storage:
+  pvName: pipeline11java-pv
+  pvcName: pipeline11java-pvc
+  capacity: 1Gi                  # Aapke existing PV/PVC me 1Gi hai, toh yahan bhi 1Gi rakhein
+  storageClassName: manual
+  hostPath: /srv/pipeline11java.pv

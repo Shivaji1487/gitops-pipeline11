@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: pipeline11-nginx-config
-  namespace: bank-production-v11
+  namespace: {{ .Values.namespace }}
 data:
   default.conf: |
     server {

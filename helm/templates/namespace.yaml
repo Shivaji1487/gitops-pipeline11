@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: bank-production-v11
+  name: {{ .Values.namespace }}

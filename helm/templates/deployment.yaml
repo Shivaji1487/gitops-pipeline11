@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pipeline11java-app
-  namespace: bank-production-v11
+  namespace: {{ .Values.namespace }}
 spec:
   replicas: 1
   selector:

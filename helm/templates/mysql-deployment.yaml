@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-db
-  namespace: bank-production-v11
+  namespace: {{ .Values.namespace }}
 spec:
   selector:
     matchLabels:

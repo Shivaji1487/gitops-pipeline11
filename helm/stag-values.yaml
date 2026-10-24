@@ -1,0 +1,8 @@
+namespace: bank-staging-v11
+
+storage:
+  pvName: pipeline11java-staging-pv
+  pvcName: pipeline11java-staging-pvc
+  capacity: 500Mi
+  storageClassName: manual
+  hostPath: /srv/pipeline11java-staging.pv

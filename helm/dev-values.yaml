@@ -1,0 +1,8 @@
+namespace: bank-dev-v11
+
+storage:
+  pvName: pipeline11java-dev-pv
+  pvcName: pipeline11java-dev-pvc
+  capacity: 500Mi
+  storageClassName: manual
+  hostPath: /srv/pipeline11java-dev.pv
